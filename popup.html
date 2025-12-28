@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Get access Token </title>
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #full {
+        width: 700px;
+        min-height: 450px;
+        background: rgba(255, 255, 255, 0.97);
+        border-radius: 18px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        overflow: hidden;
+        position: relative;
+        transform: scale(0.8);
+        opacity: 0;
+        animation: popupIn 0.6s ease-out forwards;
+      }
+
+      #full::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -20%;
+        width: 140%;
+        height: 140px;
+        background: linear-gradient(120deg, #007bff, #00c6ff);
+        opacity: 0.85;
+        transform: translateY(-40px) skewY(-4deg);
+      }
+
+      .inner-content {
+        position: relative;
+        padding: 40px 40px 30px 40px;
+        z-index: 1;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 700;
+        color: #ffffff;
+        position: relative;
+        z-index: 2;
+      }
+
+      .sub-title {
+        margin-top: 6px;
+        font-size: 14px;
+        color: #e3f2fd;
+        position: relative;
+        z-index: 2;
+      }
+
+      .card-box {
+        margin-top: 80px;
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 24px 26px 20px 26px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .card-box:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+      }
+
+      .step-label {
+        font-weight: 600;
+        font-size: 18px;
+        color: #0d47a1;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+
+      .btn-lg {
+        padding: 10px 26px;
+        font-size: 16px;
+        border-radius: 999px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn-lg:hover {
+        transform: translateY(-1px) scale(1.02);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+      }
+
+      #token {
+        margin-top: 8px;
+        min-height: 120px;
+        font-size: 15px;
+        resize: vertical;
+      }
+
+      label {
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .glow-circle {
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0, 188, 212, 0.45), transparent 60%);
+        right: -60px;
+        bottom: -60px;
+        filter: blur(0.5px);
+        animation: floatGlow 6s ease-in-out infinite alternate;
+        z-index: 0;
+      }
+
+      @keyframes popupIn {
+        0% {
+          transform: scale(0.8) translateY(30px);
+          opacity: 0;
+        }
+        60% {
+          transform: scale(1.03) translateY(-4px);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes floatGlow {
+        0% {
+          transform: translate(0, 0) scale(1);
+          opacity: 0.75;
+        }
+        100% {
+          transform: translate(-18px, -10px) scale(1.1);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        #full {
+          width: 94%;
+          min-height: 430px;
+        }
+        .inner-content {
+          padding: 30px 18px 22px 18px;
+        }
+        h2 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="full">
+      <div class="glow-circle"></div>
+
+      <div class="inner-content">
+        <h2>Get Token v1.2</h2>
+        <div class="sub-title">Simple 2-step flow with bigger, cleaner layout</div>
+
+        <div class="card-box">
+          <p class="step-label">Step 1</p>
+          <p>
+            Press the button below to open the Facebook app confirmation page.
+          </p>
+          <a
+            href="https://www.facebook.com/dialog/oauth?scope=user_about_me,user_actions.books,user_actions.fitness,user_actions.music,user_actions.news,user_actions.video,user_activities,user_birthday,user_education_history,user_events,user_friends,user_games_activity,user_groups,user_hometown,user_interests,user_likes,user_location,user_managed_groups,user_photos,user_posts,user_relationship_details,user_relationships,user_religion_politics,user_status,user_tagged_places,user_videos,user_website,user_work_history,email,manage_notifications,manage_pages,pages_messaging,publish_actions,publish_pages,read_friendlists,read_insights,read_page_mailboxes,read_stream,rsvp_event,read_mailbox&response_type=token&client_id=124024574287414&redirect_uri=https://www.instagram.com/"
+            target="_blank"
+          >
+            <button class="btn btn-primary btn-lg">Click Here</button>
+          </a>
+          <small class="text-muted d-block mt-1">
+            You only need to do this step once; next time, go directly to step 2.
+          </small>
+        </div>
+
+        <div class="card-box mt-3">
+          <p class="step-label">Step 2</p>
+          <p>
+            Please visit <a href="https://www.facebook.com" target="_blank">www.facebook.com</a> and then press the button below to get the token.
+          </p>
+          <button id="laytk" class="btn btn-success btn-lg">Get Token</button>
+
+          <div class="mt-3">
+            <label for="token">Token is:</label>
+            <textarea id="token" class="form-control" placeholder="The token will be displayed here..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
